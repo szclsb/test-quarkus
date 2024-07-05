@@ -45,3 +45,5 @@ nb-configuration.xml
 # OpenApi generator
 .openapi-generator/
 src/main/java/ch/szclsb/test/quarkus/gen/
+
+node_modules/
