@@ -47,3 +47,7 @@ nb-configuration.xml
 src/main/java/ch/szclsb/test/quarkus/gen/
 
 node_modules/
+src/main/webui/src/gen/apis/
+src/main/webui/src/gen/models/
+src/main/webui/src/gen/index.ts
+src/main/webui/src/gen/runtime.ts
