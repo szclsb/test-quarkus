@@ -1,0 +1,9 @@
+
+    @{{httpMethod}}{{#subresourceOperation}}
+    @Path("{{{path}}}"){{/subresourceOperation}}{{#hasConsumes}}
+    @Consumes({ {{#consumes}}"{{{mediaType}}}"{{^-last}}, {{/-last}}{{/consumes}} }){{/hasConsumes}}{{#hasProduces}}
+    @Produces({ {{#produces}}"{{{mediaType}}}"{{^-last}}, {{/-last}}{{/produces}} }){{/hasProduces}}{{#hasAuthMethods}}{{#authMethods}}{{#scopes.0}}
+    @RolesAllowed({ {{#scopes}} "{{scope}}"{{^-last}},{{/-last}} {{/scopes}} }) {{/scopes.0}}{{^scopes.0}}
+    @Authenticated{{/scopes.0}}{{/authMethods}}{{/hasAuthMethods}}{{^hasAuthMethods}}
+    @PermitAll(){{/hasAuthMethods}}
+    RestResponse<{{#returnResponse}}Response{{/returnResponse}}{{^returnResponse}}{{#returnContainer}}{{#isMap}}Map<String, {{{returnBaseType}}}>{{/isMap}}{{#isArray}}{{{returnContainer}}}<{{{returnBaseType}}}>{{/isArray}}{{/returnContainer}}{{^returnContainer}}{{{returnBaseType}}}{{/returnContainer}}{{/returnResponse}}> {{nickname}}({{#allParams}}{{>queryParams}}{{>pathParams}}{{>headerParams}}{{>bodyParams}}{{>formParams}}{{^-last}},{{/-last}}{{/allParams}});

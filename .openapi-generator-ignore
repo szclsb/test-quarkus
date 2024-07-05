@@ -1,0 +1,8 @@
+# OpenAPI Generator Ignore
+# Lines beginning with a # are comments
+
+/**
+!.openapi-generator/
+!src/main/java/ch/szclsb/test/quarkus/gen/api/**
+!src/main/java/ch/szclsb/test/quarkus/gen/dto/**
+

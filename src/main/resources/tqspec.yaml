@@ -1,0 +1,80 @@
+---
+openapi: 3.0.3
+info:
+  title: SCWA
+  description: ''
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+components:
+  schemas:
+    ReadDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        version:
+          type: integer
+          format: int32
+      required:
+        - id
+        - version
+    TestWriteDto:
+      type: object
+      properties:
+        text:
+          type: string
+    TestReadDto:
+      allOf:
+        - $ref: "#/components/schemas/ReadDto"
+        - $ref: "#/components/schemas/TestWriteDto"
+paths:
+  /api/v1/test:
+    get:
+      tags:
+        - test
+      operationId: listAllTests
+      description: lists some test texts
+      responses:
+        200:
+          description: retrieved some test texts successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TestReadDto"
+    post:
+      tags:
+        - test
+      operationId: createTest
+      description: persists a test text
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TestWriteDto"
+      responses:
+        201:
+          description: persisted a test text successfully
+  /api/v1/test/{testId}:
+    get:
+      tags:
+        - test
+      parameters:
+        - in: path
+          name: testId
+          schema:
+            type: integer
+            format: int64
+          required: true
+      operationId: findTests
+      description: find a test text
+      responses:
+        200:
+          description: retrieved a test text successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TestReadDto"

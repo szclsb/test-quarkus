@@ -41,3 +41,7 @@ nb-configuration.xml
 
 # Plugin directory
 /.quarkus/cli/plugins/
+
+# OpenApi generator
+.openapi-generator/
+src/main/java/ch/szclsb/test/quarkus/gen/
